@@ -29,18 +29,32 @@ uritemplate.prototype.fill = function(context, submatch) {
   }
 
   // Prefix
-  if (operator === '#' || operator === '?' || operator === '/' || operator === '&') {
+  if (operator === '#' || operator === '?' || operator === '/' || operator === '&' || operator === '.' || operator === ';') {
     prefix = operator;
   }
 
   // Glue
-  if (operator === '?' || operator === '/' || operator === '&') {
+  if (operator === '/' || operator === '&' || operator === '.' || operator === ';') {
     glue = operator;
+  } else if (operator === '?') {
+    glue = '&';
   }
 
   const allKeys = workString.split(',');
 
-  const result = allKeys.map(key => this.processKey(context, key, operator));
+  const result = allKeys.map(key => {
+    const value = this.processKey(context, key, operator) || '';
+    let prefix = '';
+
+    if (operator === ';' || operator === '&' || operator === '?') {
+      prefix = key;
+      if (value !== '' || operator != ';') {
+        prefix = prefix + '=';
+      }
+    }
+
+    return prefix + value;
+  });
 
   return prefix + result.join(glue);
 };
