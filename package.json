@@ -4,5 +4,9 @@
   "main": "index.js",
   "repository": "https://github.com/lsmoura/urlencode.git",
   "author": "Sergio Moura <sergio@moura.ca>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1"
+  }
 }
