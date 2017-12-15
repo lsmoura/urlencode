@@ -1,0 +1,8 @@
+{
+  "name": "urlencode",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/lsmoura/urlencode.git",
+  "author": "Sergio Moura <sergio@moura.ca>",
+  "license": "MIT"
+}
